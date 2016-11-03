@@ -1,31 +1,50 @@
 function validaForm() {
 
 	validaNome();
-	validaIdade();
-	validaEmail();
-	validaTelefone();
-	validaSexo();
-	validaLinguas();
-	validaEstado();
-	validaCidade();
+	//validaIdade();
+	//validaEmail();
+	//validaTelefone();
+	//validaSexo();
+	//validaLinguas();
+	//validaEstado();
+	//validaCidade();
 
 }
 
 function validaNome() {
 	let nome = document.getElementById("nome");
-	if (nome.value == null || nome.value == "") {
-		alert("É preciso preencher seu nome");
-		nome.classList.add('erroClass');
-		return false;
+	let validacaoNome = /^[A-Za-záàâãéèêíóúçÇ ]{10,30}$/;
+	verificaRegEx(nome, validacaoNome);
+}
+
+function verificaRegEx(elemento, regex) {
+	if(elemento.value.search(regex)){
+		bordaVermelha(elemento, true);
+		return false;	
 	}else{
-		nome.classList.remove("erroClass");
+		bordaVermelha(elemento, false);
 	}
+}
+
+function verificaPreenchimento(elemento) {
+	if (elemento.value == null || elemento.value == ""){
+		bordaVermelha(elemento, true);
+		return true;
+	}else{
+		bordaVermelha(elemento, false);
+		return false;
+	}
+}
+
+function bordaVermelha(elemento, valor) {
+	if(valor) elemento.classList.add('erroClass');
+	else elemento.classList.remove("erroClass");
 }
 
 function validaIdade() { 
  	let idade = document.getElementById("idade");
 	if (idade.value == null || idade.value == "") {
-		alert("Preencha a idade");
+		console.log("Preencha a idade");
 		idade.classList.add("erroClass");
 		return false;
 	}else{
@@ -38,7 +57,7 @@ function validaEmail() {
 	let atpos = email.value.indexOf("@");
 	let dotpos = email.value.lastIndexOf(".");
 	if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 > email.value.length) {
-		alert("Email inválido");
+		console.log("Email inválido");
 		email.classList.add("erroClass");
 		return false;
 	}
@@ -50,27 +69,19 @@ function validaEmail() {
 function validaTelefone() {
 	let telefone = document.getElementById("telefone");
 	if (telefone.value == null || telefone.value == "") {
-		alert("Telefone inválido");
+		console.log("Telefone inválido");
 		telefone.classList.add("erroClass");
 		return false;
 	}else{
 		telefone.classList.remove("erroClass");
 	}
 }
-function mascara(t, mask){
-	var i = t.value.length;
-	var saida = mask.substring(1,0);
-	var texto = mask.substring(i)
-	if (texto.substring(0,1) != saida){
-		t.value += texto.substring(0,1);
-	}
-} //fonte: vivaolinux.com.br/script/Mascara-JavaScript-para-Campos-de-Telefone-Celular-e-CEP/
 
 function validaSexo() {
 	let inputSexo = document.getElementById("sexo");
 	if (document.formulario.sexo[0].checked == false &&
 			document.formulario.sexo[1].checked == false) {
-		alert("Você não selecionou o sexo");
+		console.log("Você não selecionou o sexo");
 		inputSexo.classList.add("erroClass");
 		return false;
 	}
@@ -91,7 +102,7 @@ function validaLinguas() {
 		}
 	}
 	if (!algumChecado) {
-		alert("Nenhuma lingua selecionada!");
+		console.log("Nenhuma lingua selecionada!");
 		inputLinguas.classList.add("erroClass");
 		return false;
 	}
@@ -100,7 +111,7 @@ function validaLinguas() {
 function validaEstado() {
 	let estado = document.getElementById("estado");
 	if(estado.value == "null"){
-		alert("Selecione um estado")
+		console.log("Selecione um estado")
 		estado.classList.add("erroClass");
 		return false;
 	}else{
@@ -111,7 +122,7 @@ function validaEstado() {
 function validaCidade() {
 	let cidade = document.getElementById("cidade");
 	if(cidade.value == "null" || cidade.value == "0"){
-		alert("Selecione uma cidade")
+		console.log("Selecione uma cidade")
 		cidade.classList.add("erroClass");
 		return false;
 	}else{
