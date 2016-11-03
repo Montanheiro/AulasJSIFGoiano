@@ -1,11 +1,13 @@
 function validaForm() {
 
-	validaNome();
-	//validaIdade();
-	//validaEmail();
-	//validaTelefone();
-	//validaSexo();
-	//validaLinguas();
+	validaNome(); //OK
+	validaNascimento(); //OK
+	validaIdade();
+	validaEmail();
+	validaCPFouCNPJ();
+	validaTelefone();
+	validaSexo();
+	validaLinguas();
 	//validaEstado();
 	//validaCidade();
 
@@ -13,68 +15,35 @@ function validaForm() {
 
 function validaNome() {
 	let nome = document.getElementById("nome");
-	let validacaoNome = /^[A-Za-záàâãéèêíóúçÇ ]{10,30}$/;
+	let validacaoNome = /^[A-Za-záàâãéèêíóúç]{10,30}$/i;
 	verificaRegEx(nome, validacaoNome);
 }
 
-function verificaRegEx(elemento, regex) {
-	if(elemento.value.search(regex)){
-		bordaVermelha(elemento, true);
-		return false;	
-	}else{
-		bordaVermelha(elemento, false);
-	}
-}
-
-function verificaPreenchimento(elemento) {
-	if (elemento.value == null || elemento.value == ""){
-		bordaVermelha(elemento, true);
-		return true;
-	}else{
-		bordaVermelha(elemento, false);
-		return false;
-	}
-}
-
-function bordaVermelha(elemento, valor) {
-	if(valor) elemento.classList.add('erroClass');
-	else elemento.classList.remove("erroClass");
+function validaNascimento() {
+	let nascimento = document.getElementById("nascimento");
+	let validacaoNascimento = /^([1-9]|0[1-9]|[1,2][0-9]|3[0,1])\/([1-9]|1[0,1,2])\/\d{4}$/;
+	verificaRegEx(nascimento, validacaoNascimento);
 }
 
 function validaIdade() { 
  	let idade = document.getElementById("idade");
-	if (idade.value == null || idade.value == "") {
-		console.log("Preencha a idade");
-		idade.classList.add("erroClass");
-		return false;
-	}else{
-		idade.classList.remove("erroClass");
-	}
+	
 }
 
 function validaEmail() {
 	let email = document.getElementById("email");
-	let atpos = email.value.indexOf("@");
-	let dotpos = email.value.lastIndexOf(".");
-	if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 > email.value.length) {
-		console.log("Email inválido");
-		email.classList.add("erroClass");
-		return false;
-	}
-	else{
-		email.classList.remove("erroClass");
-	}
+	
+}
+
+function validaCPFouCNPJ() {
+	let cpfoucnpj = document.getElementById("cpforcnpj");
+	let validacaoCPFouCNPJ = a;
+
 }
 
 function validaTelefone() {
 	let telefone = document.getElementById("telefone");
-	if (telefone.value == null || telefone.value == "") {
-		console.log("Telefone inválido");
-		telefone.classList.add("erroClass");
-		return false;
-	}else{
-		telefone.classList.remove("erroClass");
-	}
+	
 }
 
 function validaSexo() {
@@ -128,4 +97,29 @@ function validaCidade() {
 	}else{
 		cidade.classList.remove("erroClass");
 	}
+}
+
+
+function verificaRegEx(elemento, regex) {
+	if(elemento.value.search(regex)){
+		bordaVermelha(elemento, true);
+		return false;	
+	}else{
+		bordaVermelha(elemento, false);
+	}
+}
+
+function verificaPreenchimento(elemento) {
+	if (elemento.value == null || elemento.value == ""){
+		bordaVermelha(elemento, true);
+		return true;
+	}else{
+		bordaVermelha(elemento, false);
+		return false;
+	}
+}
+
+function bordaVermelha(elemento, valor) {
+	if(valor) elemento.classList.add('erroClass');
+	else elemento.classList.remove("erroClass");
 }
