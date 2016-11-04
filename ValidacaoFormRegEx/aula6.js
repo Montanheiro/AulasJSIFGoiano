@@ -3,7 +3,7 @@ function validaForm() {
 	validaNome(); //OK
 	validaNascimento(); //OK
 	validaIdade();
-	validaEmail();
+	validaEmail(); //OK
 	validaCPFouCNPJ();
 	validaTelefone();
 	validaSexo();
@@ -32,13 +32,14 @@ function validaIdade() {
 
 function validaEmail() {
 	let email = document.getElementById("email");
-	
+	let validacaoEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	verificaRegEx(email, validacaoEmail);
 }
 
 function validaCPFouCNPJ() {
 	let cpfoucnpj = document.getElementById("cpforcnpj");
-	let validacaoCPFouCNPJ = a;
-
+	let validacaoCPFouCNPJ = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/;
+	verificaRegEx(cpfoucnpj, validacaoCPFouCNPJ);
 }
 
 function validaTelefone() {
