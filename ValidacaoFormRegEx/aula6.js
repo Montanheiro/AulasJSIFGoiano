@@ -36,7 +36,7 @@ function validaNascimento() {
 
 function validaIdade() { 
  	let idade = document.getElementById("idade");
- 	let validacaoIdade = /^[1-9]{1}[0-9]{1}[0]?$/;
+ 	let validacaoIdade = /^(([1]{1}[0]{1}[0]{1})|([1-9]{1}[0-9]{1}))$/;
  	return verificaRegEx(idade, validacaoIdade);
 }
 
