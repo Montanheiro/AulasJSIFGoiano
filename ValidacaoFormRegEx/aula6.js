@@ -5,7 +5,7 @@ function validaForm() {
 	validaIdade();
 	validaEmail(); //OK
 	validaCPFouCNPJ(); //OK
-	validaTelefone();
+	validaTelefone(); //OK
 	validaSexo(); //OK
 	validaLinguas(); //OK
 	validaEstado(); //OK
@@ -43,7 +43,8 @@ function validaCPFouCNPJ() {
 
 function validaTelefone() {
 	let telefone = document.getElementById("telefone");
-	
+	validacaoTelefone = /^\(?[0]?[1-9]{2}\)? ?[9]?[0-9]{4}\-?[0-9]{4}$/;
+	verificaRegEx(telefone, validacaoTelefone);	
 }
 
 function validaSexo() {
