@@ -2,7 +2,7 @@ function validaForm() {
 
 	validaNome(); //OK
 	validaNascimento(); //OK
-	validaIdade();
+	validaIdade(); //OK
 	validaEmail(); //OK
 	validaCPFouCNPJ(); //OK
 	validaTelefone(); //OK
@@ -10,6 +10,11 @@ function validaForm() {
 	validaLinguas(); //OK
 	validaEstado(); //OK
 	validaCidade(); //Ok
+
+	if (validaNome() || validaNascimento() || validaIdade() || validaEmail() ||
+		validaCPFouCNPJ() || validaTelefone() || validaSexo() || validaLinguas() ||
+		validaEstado() || validaCidade()) console.log("tudo ok");
+	else console.log("deu ruim");
 }
 
 function validaNome() {
@@ -20,7 +25,7 @@ function validaNome() {
 
 function validaNascimento() {
 	let nascimento = document.getElementById("nascimento");
-	let validacaoNascimento = /^([1-9]|0[1-9]|[1,2][0-9]|3[0,1])\/([1-9]|1[0,1,2])\/\d{4}$/;
+	let validacaoNascimento = /^[0-9]{2}\/?[0-9]{2}\/?[0-9]{4}$/;
 	verificaRegEx(nascimento, validacaoNascimento);
 }
 
@@ -28,12 +33,11 @@ function validaIdade() {
  	let idade = document.getElementById("idade");
  	let validacaoIdade = /^[1-9]{1}[0-9]{1}[0]?$/;
  	verificaRegEx(idade, validacaoIdade);
-	
 }
 
 function validaEmail() {
 	let email = document.getElementById("email");
-	let validacaoEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	let validacaoEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //by W3C
 	verificaRegEx(email, validacaoEmail);
 }
 
@@ -100,6 +104,7 @@ function verificaRegEx(elemento, regex) {
 		return false;	
 	}else{
 		bordaVermelha(elemento, false);
+		return true
 	}
 }
 

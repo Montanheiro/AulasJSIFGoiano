@@ -19,38 +19,38 @@
 <body>
 	<form name="formulario">
 		<label for="nome">Nome: </label>
-		<input id="nome" type="text" name="nome"><br>
+		<input id="nome" type="text" name="nome" onblur="validaNome()"><br>
 
 		<label for="nascimento">Data Nascimento: </label>
-		<input id="nascimento" type="text" name="nascimento" placeholder="DD/MM/AAAA"><br>
+		<input id="nascimento" type="text" name="nascimento" placeholder="DD/MM/AAAA" onblur="validaNascimento()"><br>
 
 		<label for="idade">Idade: </label>
-		<input type="text" name="idade" id="idade"><br>
+		<input type="text" name="idade" id="idade" placeholder="De 10 a 100" onblur="validaIdade()"><br>
 
 		<label for="email">Email: </label>
-		<input type="text" name="email" id="email" placeholder="nome@dominio"><br>
+		<input type="text" name="email" id="email" placeholder="nome@dominio" onblur="validaEmail()"><br>
 
 		<label for="cpforcnpj">CPF/CNPJ: </label>
-		<input type="text" name="cpforcnpj" id="cpforcnpj"><br>
+		<input type="text" name="cpforcnpj" id="cpforcnpj" onblur="validaCPFouCNPJ()"><br>
 
 		<label for="telefone">Telefone com DDD: </label>
-		<input type="text" name="telefone" id="telefone"><br>
+		<input type="text" name="telefone" id="telefone" onblur="validaTelefone()"><br>
 
 		<label id="sexo">Sexo: 
-			<input type="radio" name="sexo" value="masculino">Masculino
-			<input type="radio" name="sexo" value="feminino">Feminino<br>
+			<input type="radio" name="sexo" value="masculino" onchange="validaSexo()">Masculino
+			<input type="radio" name="sexo" value="feminino" onchange="validaSexo()">Feminino<br>
 		</label>
 		
 		<label id="linguas">Línguas Faladas: 
-			<input type="checkbox" name="idioma" value="PT" id="linguas">Português
-			<input type="checkbox" name="idioma" value="EN" id="linguas">Inglês
-			<input type="checkbox" name="idioma" value="ES" id="linguas">Espanhol
-			<input type="checkbox" name="idioma" value="FR" id="linguas">Francês
-			<input type="checkbox" name="idioma" value="RU" id="linguas">Russo<br>
+			<input type="checkbox" name="idioma" value="PT" id="linguas" onchange="validaLinguas()">Português
+			<input type="checkbox" name="idioma" value="EN" id="linguas" onchange="validaLinguas()">Inglês
+			<input type="checkbox" name="idioma" value="ES" id="linguas" onchange="validaLinguas()">Espanhol
+			<input type="checkbox" name="idioma" value="FR" id="linguas" onchange="validaLinguas()">Francês
+			<input type="checkbox" name="idioma" value="RU" id="linguas" onchange="validaLinguas()">Russo<br>
 		</label>
 
 		<label for="estado">Estado: </label>
-		<select name="estado" id="estado" onchange="criarCidades()">
+		<select name="estado" id="estado" onchange="criarCidades();validaEstado();">
 			<option value="null">Selecione</option>
 			<option value="AC">Acre</option>
 			<option value="AL">Alagoas</option>
@@ -82,7 +82,7 @@
 		</select><br>
 
 		<label for="cidade">Cidade: </label>
-		<select name="cidade" id="cidade">
+		<select name="cidade" id="cidade" onchange="validaCidade()">
 			<option value="null">Selecione</option>
 		</select><br>
 
@@ -91,5 +91,5 @@
 	
 </body>
 <script type="text/javascript" src="aula6.js"></script>
-<script type="text/javascript" src="combobox.js"></script>
+<script type="text/javascript" src="criarcidades.js"></script>
 </html>
