@@ -4,10 +4,10 @@ function validaForm() {
 	validaNascimento(); //OK
 	validaIdade();
 	validaEmail(); //OK
-	validaCPFouCNPJ();
+	validaCPFouCNPJ(); //OK
 	validaTelefone();
-	validaSexo();
-	validaLinguas();
+	validaSexo(); //OK
+	validaLinguas(); //OK
 	//validaEstado();
 	//validaCidade();
 
@@ -51,31 +51,26 @@ function validaSexo() {
 	let inputSexo = document.getElementById("sexo");
 	if (document.formulario.sexo[0].checked == false &&
 			document.formulario.sexo[1].checked == false) {
-		console.log("Você não selecionou o sexo");
-		inputSexo.classList.add("erroClass");
+		bordaVermelha(inputSexo, true);
 		return false;
 	}
-	else{
-		inputSexo.classList.remove("erroClass");
-	}
+	else bordaVermelha(inputSexo, false);
 }
 
 function validaLinguas() {
 	let inputLinguas = document.getElementById("linguas");
-	let algumChecado = false;
+	let selecionado = 0;
 	let linguas = document.getElementById("linguas").getElementsByTagName("input");
+	
 	for(var i = 0; i < linguas.length; i++){
-		if(linguas[i].type == "checkbox" && linguas[i].checked == true){
-			algumChecado = true;
-			inputLinguas.classList.remove("erroClass");
-			return;
-		}
+		if(linguas[i].type == "checkbox" && linguas[i].checked == true)	selecionado++;
 	}
-	if (!algumChecado) {
-		console.log("Nenhuma lingua selecionada!");
-		inputLinguas.classList.add("erroClass");
+
+	if (selecionado < 3) {
+		bordaVermelha(inputLinguas, true);
 		return false;
 	}
+	else bordaVermelha(inputLinguas, false);
 }
 
 function validaEstado() {
