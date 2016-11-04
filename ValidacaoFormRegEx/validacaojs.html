@@ -17,7 +17,7 @@
 	</style>
 </head>
 <body>
-	<form name="formulario">
+	<form name="formulario" onsubmit="return validaForm()">
 		<label for="nome">Nome: </label>
 		<input id="nome" type="text" name="nome" onblur="validaNome()"><br>
 
@@ -86,7 +86,7 @@
 			<option value="null">Selecione</option>
 		</select><br>
 
-		<button type="button" onclick="validaForm()">Enviar</button>
+		<button type="submit"">Enviar</button>
 	</form>
 	
 </body>

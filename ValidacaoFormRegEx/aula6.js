@@ -9,48 +9,53 @@ function validaForm() {
 	validaSexo(); //OK
 	validaLinguas(); //OK
 	validaEstado(); //OK
-	validaCidade(); //Ok
+	validaCidade(); //Ok*/
 
-	if (validaNome() || validaNascimento() || validaIdade() || validaEmail() ||
-		validaCPFouCNPJ() || validaTelefone() || validaSexo() || validaLinguas() ||
-		validaEstado() || validaCidade()) console.log("tudo ok");
-	else console.log("deu ruim");
+	if(validaNome() && validaNascimento() && validaIdade() &&
+		validaEmail() && validaCPFouCNPJ() && validaTelefone() &&
+		validaSexo() && validaLinguas() && validaEstado() && validaCidade()){
+		alert("passou tudo ok");
+		return true;
+	}else{
+		console.log("deu ruim");
+		return false;
+	}
 }
 
 function validaNome() {
 	let nome = document.getElementById("nome");
 	let validacaoNome = /^[A-Za-záàâãéèêíóúç]{10,30}$/i;
-	verificaRegEx(nome, validacaoNome);
+	return verificaRegEx(nome, validacaoNome);
 }
 
 function validaNascimento() {
 	let nascimento = document.getElementById("nascimento");
 	let validacaoNascimento = /^[0-9]{2}\/?[0-9]{2}\/?[0-9]{4}$/;
-	verificaRegEx(nascimento, validacaoNascimento);
+	return verificaRegEx(nascimento, validacaoNascimento);
 }
 
 function validaIdade() { 
  	let idade = document.getElementById("idade");
  	let validacaoIdade = /^[1-9]{1}[0-9]{1}[0]?$/;
- 	verificaRegEx(idade, validacaoIdade);
+ 	return verificaRegEx(idade, validacaoIdade);
 }
 
 function validaEmail() {
 	let email = document.getElementById("email");
 	let validacaoEmail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //by W3C
-	verificaRegEx(email, validacaoEmail);
+	return verificaRegEx(email, validacaoEmail);
 }
 
 function validaCPFouCNPJ() {
 	let cpfoucnpj = document.getElementById("cpforcnpj");
 	let validacaoCPFouCNPJ = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$/;
-	verificaRegEx(cpfoucnpj, validacaoCPFouCNPJ);
+	return verificaRegEx(cpfoucnpj, validacaoCPFouCNPJ);
 }
 
 function validaTelefone() {
 	let telefone = document.getElementById("telefone");
 	validacaoTelefone = /^\(?[0]?[1-9]{2}\)? ?[9]?[0-9]{4}\-?[0-9]{4}$/;
-	verificaRegEx(telefone, validacaoTelefone);	
+	return verificaRegEx(telefone, validacaoTelefone);	
 }
 
 function validaSexo() {
@@ -60,7 +65,7 @@ function validaSexo() {
 		bordaVermelha(inputSexo, true);
 		return false;
 	}
-	else bordaVermelha(inputSexo, false);
+	else return bordaVermelha(inputSexo, false);
 }
 
 function validaLinguas() {
@@ -76,7 +81,7 @@ function validaLinguas() {
 		bordaVermelha(inputLinguas, true);
 		return false;
 	}
-	else bordaVermelha(inputLinguas, false);
+	else return bordaVermelha(inputLinguas, false);
 }
 
 function validaEstado() {
@@ -85,7 +90,7 @@ function validaEstado() {
 		bordaVermelha(estado, true);
 		return false;
 	}
-	else bordaVermelha(estado, false);
+	else return bordaVermelha(estado, false);
 }
 
 function validaCidade() {
@@ -94,7 +99,7 @@ function validaCidade() {
 		bordaVermelha(cidade, true);
 		return false;
 	}
-	else bordaVermelha(cidade, false);
+	else return bordaVermelha(cidade, false);
 }
 
 
@@ -104,21 +109,27 @@ function verificaRegEx(elemento, regex) {
 		return false;	
 	}else{
 		bordaVermelha(elemento, false);
-		return true
+		return true;
 	}
 }
 
 function verificaPreenchimento(elemento) {
 	if (elemento.value == null || elemento.value == ""){
 		bordaVermelha(elemento, true);
-		return true;
+		return false;
 	}else{
 		bordaVermelha(elemento, false);
-		return false;
+		return true;
 	}
 }
 
 function bordaVermelha(elemento, valor) {
-	if(valor) elemento.classList.add('erroClass');
-	else elemento.classList.remove("erroClass");
+	if(valor){
+		elemento.classList.add('erroClass');
+		return false;
+	}
+	else{
+		elemento.classList.remove("erroClass");
+		return true;
+	}
 }
