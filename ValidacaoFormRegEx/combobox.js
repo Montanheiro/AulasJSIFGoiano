@@ -5669,7 +5669,7 @@ cidadesdecadaestado['TO']=
         "Wanderlândia",
         "Xambioá"
       ];
-      function ChangeCidadeList() {
+      function criarCidades() {
           var listadeestados = document.getElementById("estado");
           var listadecidades = document.getElementById("cidade");
           var selecionarEstado = listadeestados.options[listadeestados.selectedIndex].value;

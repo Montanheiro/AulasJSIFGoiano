@@ -8,9 +8,8 @@ function validaForm() {
 	validaTelefone();
 	validaSexo(); //OK
 	validaLinguas(); //OK
-	//validaEstado();
-	//validaCidade();
-
+	validaEstado(); //OK
+	validaCidade(); //Ok
 }
 
 function validaNome() {
@@ -76,23 +75,19 @@ function validaLinguas() {
 function validaEstado() {
 	let estado = document.getElementById("estado");
 	if(estado.value == "null"){
-		console.log("Selecione um estado")
-		estado.classList.add("erroClass");
+		bordaVermelha(estado, true);
 		return false;
-	}else{
-		estado.classList.remove("erroClass");
 	}
+	else bordaVermelha(estado, false);
 }
 
 function validaCidade() {
 	let cidade = document.getElementById("cidade");
-	if(cidade.value == "null" || cidade.value == "0"){
-		console.log("Selecione uma cidade")
-		cidade.classList.add("erroClass");
+	if(cidade.value == "null" || cidade.value == "0" || cidade.value == ""){
+		bordaVermelha(cidade, true);
 		return false;
-	}else{
-		cidade.classList.remove("erroClass");
 	}
+	else bordaVermelha(cidade, false);
 }
 
 
